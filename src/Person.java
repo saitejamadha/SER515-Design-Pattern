@@ -1,6 +1,6 @@
 public abstract class Person {
 
-    private ProductMenu theProductMenu;
+    protected ProductMenu theProductMenu;
 
     void showAddButton() {
         this.theProductMenu.showAddButton();
@@ -20,6 +20,6 @@ public abstract class Person {
 
     abstract void showMenu();
 
-    abstract void createProductMenu();
+    abstract ProductMenu createProductMenu();
 
 }

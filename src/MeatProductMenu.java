@@ -1,22 +1,27 @@
-public class MeatProductMenu extends ProductMenu {
+public class MeatProductMenu implements ProductMenu {
 
     @Override
-    void showAddButton() {
+    public void showMenu() {
+        System.out.println("MeatProductMenu > showMenu");
+    }
+
+    @Override
+    public void showAddButton() {
         System.out.println("MeatProductMenu > showAddButton");
     }
 
     @Override
-    void showViewButton() {
+    public void showViewButton() {
         System.out.println("MeatProductMenu > showViewButton");
     }
 
     @Override
-    void showRadioButton() {
+    public void showRadioButton() {
         System.out.println("MeatProductMenu > showRadioButton");
     }
 
     @Override
-    void showLabels() {
+    public void showLabels() {
         System.out.println("MeatProductMenu > showLabels");
     }
 }
