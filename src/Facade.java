@@ -1,11 +1,9 @@
-import java.util.List;
-
 public class Facade {
 
     private int userType;
-    private ProductMenu theSelectedProduct;
+    private Product theSelectedProduct;
     private int nProductCategory;
-    private List<ProductMenu> theProductList;
+    private ClassProductList theProductList;
     private Person thePerson;
 
     void login() {
