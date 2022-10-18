@@ -34,7 +34,7 @@ public class Facade {
 
     }
 
-    void createUser() {
+    void createUser(UserInfoItem userinfoItem) {
 
     }
 
@@ -46,8 +46,8 @@ public class Facade {
 
     }
 
-    void selectProduct() {
-
+    Product selectProduct() {
+        return null;
     }
 
     void productOperation() {
