@@ -2,7 +2,7 @@ public class ProduceProductMenu implements ProductMenu {
 
     @Override
     public void showMenu() {
-        System.out.println("MeatProductMenu > showMenu");
+        System.out.println("Showing Produce Product Menu");
     }
 
     @Override

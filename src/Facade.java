@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Facade {
 
     private int userType;
@@ -6,13 +8,17 @@ public class Facade {
     private ClassProductList theProductList;
     private Person thePerson;
 
-    void login() {
+    boolean login() {
         Login obj = new Login();
-        this.userType = obj.getUserType();
+        boolean isSuccessful = obj.login();
+        if (isSuccessful) {
+            this.userType = obj.getUserType();
+            this.thePerson = this.userType == 0 ? new Buyer() : new Seller();
+        }
+        return isSuccessful;
     }
 
     void addTrading() {
-
     }
 
     void viewTrading() {
@@ -20,7 +26,14 @@ public class Facade {
     }
 
     void viewOffering() {
-
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nSelect the product category:");
+        System.out.println("0: Produce");
+        System.out.println("1: Meat");
+        nProductCategory = scan.nextInt();
+        scan.nextLine();
+        ProductMenu theProductMenu = nProductCategory == 0 ? new ProduceProductMenu() : new MeatProductMenu();
+        theProductMenu.showMenu();
     }
 
     void markOffering() {

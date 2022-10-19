@@ -8,11 +8,17 @@ import java.util.Scanner;
 
 public class Login {
 
-    private final int userType;
+    private int userType;
 
-    public Login() {
+    public int getUserType() {
+        return this.userType;
+    }
+
+    public boolean login() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please select the UserType: (0 = Buyer or 1 = Seller)");
+        System.out.println("Please select the UserType");
+        System.out.println("0: Buyer");
+        System.out.println("1: Seller");
         userType = sc.nextInt();
         sc.nextLine();
 
@@ -23,7 +29,7 @@ public class Login {
             br = new BufferedReader(new FileReader(file));
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
-            System.exit(1);
+            return false;
         }
 
         Map<String, String> users = new HashMap<>();
@@ -36,7 +42,7 @@ public class Login {
             }
         } catch (Exception e) {
             System.out.println("Error reading file");
-            System.exit(1);
+            return false;
         }
 
         System.out.println("Enter Username:");
@@ -44,7 +50,7 @@ public class Login {
 
         if (!users.containsKey(username)) {
             System.out.println("Username does not exist");
-            System.exit(1);
+            return false;
         }
 
         System.out.println("Enter Password:");
@@ -56,10 +62,7 @@ public class Login {
         }
 
         System.out.println("Login successful");
-    }
-
-    public int getUserType() {
-        return userType;
+        return true;
     }
 
 }
