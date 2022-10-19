@@ -7,7 +7,8 @@ public class Facade {
     private Person thePerson;
 
     void login() {
-
+        Login obj = new Login();
+        this.userType = obj.getUserType();
     }
 
     void addTrading() {
