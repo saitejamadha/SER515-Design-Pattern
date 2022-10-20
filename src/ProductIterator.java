@@ -14,7 +14,7 @@ public class ProductIterator implements ListIterator {
 	 * @return true if there is a next item in the list, false otherwise.
 	 */
 	public boolean hasNext() {
-		boolean result = false;;
+		boolean result = false;
 		if (this.index < classProductList.size()) {
 			result = true;
 		}
@@ -28,7 +28,7 @@ public class ProductIterator implements ListIterator {
 	public Product next() {
 		Product product = null;
 		if (this.hasNext()) {
-			product = (Product) classProductList.get(index);
+			product = classProductList.get(index);
 		}
 		index ++;
 		return product;
@@ -38,7 +38,7 @@ public class ProductIterator implements ListIterator {
 	 * Set the current item to the location before the first item
 	 */
 	public void moveToHead() {
-		Offering current = (Offering) classProductList.get(index);
+		Product current = classProductList.get(index);
 		this.index = classProductList.indexOf(current) - 1;
 	}
 
