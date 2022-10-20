@@ -1,21 +1,54 @@
 public class OfferingIterator implements ListIterator {
 
-	private OfferingList offeringList;
+    private final OfferingList offeringList;
+    private int index;
 
-	public boolean hasNext() {
-		return false;
-	}
+    OfferingIterator(OfferingList offList) {
+        System.out.println("Initializing offering iterator");
+        offeringList = offList;
+        index = 0;
+    }
 
-	public Offering next() {
-		return null;
-	}
+    /**
+     * Check if there is a next item in the list.
+     * @return true if there is a next item in the list, false otherwise.
+     */
+    public boolean hasNext() {
+        boolean result = false;
+        ;
+        if (this.index < offeringList.size()) {
+            result = true;
+        }
+        return result;
+    }
 
-	public void remove() {
+    /**
+     * Get the next item from the list
+     * @return the next offer
+     */
+    public Offering next() {
+        Offering offering = null;
+        if (this.hasNext()) {
+            offering = (Offering) offeringList.get(index);
+        }
+        index++;
+        return offering;
+    }
 
-	}
+    /**
+     * Remove current item from the list
+     */
+    public void remove() {
+        offeringList.remove(index);
+        index = index - 1;
+    }
 
-	public void moveToHead() {
-
-	}
+    /**
+     * Set the current item to the location before the first item
+     */
+    public void moveToHead() {
+        Offering current = (Offering) this.offeringList.get(this.index);
+        this.index = this.offeringList.indexOf(current) - 1;
+    }
 
 }
