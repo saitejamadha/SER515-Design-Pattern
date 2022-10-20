@@ -1,11 +1,23 @@
 public class Product {
 
+    private final String name;
+    private final String type;
     private final ClassProductList classProductList;
     private final Trading trading;
 
-    public Product(ClassProductList products) {
+    public Product(String type, String name, ClassProductList products) {
+        this.type = type;
+        this.name = name;
         this.classProductList = products;
         this.trading = new Trading();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getType() {
+        return this.type;
     }
 
     /**

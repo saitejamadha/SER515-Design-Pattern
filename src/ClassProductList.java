@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ClassProductList extends ArrayList<Product> {
@@ -7,21 +11,6 @@ public class ClassProductList extends ArrayList<Product> {
 
 	public ClassProductList() {
 		this.productIterator = new ProductIterator(this);
-
-		// Construct a new arraylist with 7 products in it.
-		Product product1 = new Product(this);
-		Product product2 = new Product(this);
-		Product product3 = new Product(this);
-		Product product4 = new Product(this);
-		Product product5 = new Product(this);
-
-		this.addAll( new ArrayList<>() {{
-			add(product1);
-			add(product2);
-			add(product3);
-			add(product4);
-			add(product5);
-		}});
 	}
 
 	/**
@@ -40,6 +29,21 @@ public class ClassProductList extends ArrayList<Product> {
 	 */
 	public ListIterator getIterator() {
 		return this.productIterator;
+	}
+
+	public void loadFromFile() {
+		File file = new File("./database/ProductInfo.txt");
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split(":");
+				this.add(new Product(split[0], split[1], this));
+			}
+		} catch (IOException e) {
+			System.out.println("Failed to read ProductInfo.txt");
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Facade {
@@ -26,14 +30,8 @@ public class Facade {
     }
 
     void viewOffering() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("\nSelect the product category:");
-        System.out.println("0: Produce");
-        System.out.println("1: Meat");
-        nProductCategory = scan.nextInt();
-        scan.nextLine();
-        ProductMenu theProductMenu = nProductCategory == 0 ? new ProduceProductMenu() : new MeatProductMenu();
-        theProductMenu.showMenu();
+        ProductMenu productMenu = thePerson.createProductMenu();
+        productMenu.showMenu(this);
     }
 
     void markOffering() {
@@ -52,8 +50,12 @@ public class Facade {
 
     }
 
+    /**
+     * Load the product list from the file
+     */
     void createProductList() {
-
+        this.theProductList = new ClassProductList();
+        this.theProductList.loadFromFile();
     }
 
     void addProductToUser() {

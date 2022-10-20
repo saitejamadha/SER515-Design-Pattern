@@ -1,8 +1,19 @@
 public class MeatProductMenu implements ProductMenu {
 
     @Override
-    public void showMenu() {
-        System.out.println("Showing Meat Product Menu");
+    public void showMenu(Facade facade) {
+        // TODO: Iterator pattern
+        System.out.println("\n");
+        System.out.println("#### MEAT PRODUCT MENU ####");
+        int num = 1;
+        ListIterator iterator = facade.theProductList.getIterator();
+        while (iterator.hasNext()) {
+            Product p = (Product) iterator.next();
+            if (p.getType().equals("Meat")) {
+                System.out.println(num + ". " + p.getName());
+                num++;
+            }
+        }
     }
 
     @Override

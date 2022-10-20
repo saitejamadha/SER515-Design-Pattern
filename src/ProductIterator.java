@@ -4,7 +4,7 @@ public class ProductIterator implements ListIterator {
 	private int index;
 
 	public ProductIterator(ClassProductList prodList) {
-		System.out.println("Initializing ProductIterator() ...");
+		System.out.println("Initializing ProductIterator...");
 		classProductList = prodList;
 		index = 0;
 	}

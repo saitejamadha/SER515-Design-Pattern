@@ -4,11 +4,12 @@ public class Seller extends Person {
 
     @Override
     void showMenu() {
-        this.theProductMenu.showMenu();
+
     }
 
     @Override
     ProductMenu createProductMenu() {
+        // TODO: Factory Pattern
         while (true) {
             System.out.println("Enter product type (meat or produce):");
             Scanner scanner = new Scanner(System.in);
