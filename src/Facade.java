@@ -5,7 +5,7 @@ public class Facade {
     private int userType;
     private Product theSelectedProduct;
     private int nProductCategory;
-    private ClassProductList theProductList;
+    public ClassProductList theProductList;
     private Person thePerson;
 
     boolean login() {

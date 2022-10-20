@@ -9,11 +9,11 @@ public class ClassProductList extends ArrayList<Product> {
 		this.productIterator = new ProductIterator(this);
 
 		// Construct a new arraylist with 7 products in it.
-		Product product1 = new Product();
-		Product product2 = new Product();
-		Product product3 = new Product();
-		Product product4 = new Product();
-		Product product5 = new Product();
+		Product product1 = new Product(this);
+		Product product2 = new Product(this);
+		Product product3 = new Product(this);
+		Product product4 = new Product(this);
+		Product product5 = new Product(this);
 
 		this.addAll( new ArrayList<>() {{
 			add(product1);
@@ -24,7 +24,14 @@ public class ClassProductList extends ArrayList<Product> {
 		}});
 	}
 
-	void accept(NodeVisitor visitor) {
+	/**
+	 * Accepts the visiting of the given visitor
+	 * @param visitor An instance of the node visitor.
+	 */
+	public void accept(NodeVisitor visitor) {
+		for (Product product : this) {
+			visitor.visitProduct(product);
+		}
 	}
 
 	/**
