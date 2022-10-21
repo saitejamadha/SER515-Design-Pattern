@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ClassProductList extends ArrayList<Product> {
@@ -7,24 +11,16 @@ public class ClassProductList extends ArrayList<Product> {
 
 	public ClassProductList() {
 		this.productIterator = new ProductIterator(this);
-
-		// Construct a new arraylist with 7 products in it.
-		Product product1 = new Product();
-		Product product2 = new Product();
-		Product product3 = new Product();
-		Product product4 = new Product();
-		Product product5 = new Product();
-
-		this.addAll( new ArrayList<>() {{
-			add(product1);
-			add(product2);
-			add(product3);
-			add(product4);
-			add(product5);
-		}});
 	}
 
-	void accept(NodeVisitor visitor) {
+	/**
+	 * Accepts the visiting of the given visitor
+	 * @param visitor An instance of the node visitor.
+	 */
+	public void accept(NodeVisitor visitor) {
+		for (Product product : this) {
+			visitor.visitProduct(product);
+		}
 	}
 
 	/**
@@ -33,6 +29,21 @@ public class ClassProductList extends ArrayList<Product> {
 	 */
 	public ListIterator getIterator() {
 		return this.productIterator;
+	}
+
+	public void loadFromFile() {
+		File file = new File("./database/ProductInfo.txt");
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split(":");
+				this.add(new Product(split[0], split[1], this));
+			}
+		} catch (IOException e) {
+			System.out.println("Failed to read ProductInfo.txt");
+			e.printStackTrace();
+		}
 	}
 
 }

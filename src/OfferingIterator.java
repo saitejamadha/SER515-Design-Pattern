@@ -47,8 +47,7 @@ public class OfferingIterator implements ListIterator {
      * Set the current item to the location before the first item
      */
     public void moveToHead() {
-        Offering current = (Offering) this.offeringList.get(this.index);
-        this.index = this.offeringList.indexOf(current) - 1;
+        this.index = 0;
     }
 
 }

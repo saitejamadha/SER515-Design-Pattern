@@ -4,18 +4,26 @@ public class Seller extends Person {
 
     @Override
     void showMenu() {
-        this.theProductMenu.showMenu();
+
     }
 
+    /**
+     * Create Product Menu for Seller using Factory Pattern
+     * @return ProductMenu
+     */
     @Override
     ProductMenu createProductMenu() {
+        System.out.println("=========== Factory Method Pattern ===========");
         while (true) {
-            System.out.println("Enter product type (meat or produce):");
+            System.out.println("\n#### PRODUCT MENU #####");
+            System.out.println("1. Meat");
+            System.out.println("2. Produce");
+            System.out.print("Enter product type: ");
             Scanner scanner = new Scanner(System.in);
-            String productType = scanner.nextLine();
-            if (productType.equals("meat")) {
+            int choice = Integer.parseInt(scanner.next());
+            if (choice == 1) {
                 return new MeatProductMenu();
-            } else if (productType.equals("produce")) {
+            } else if (choice == 2) {
                 return new ProduceProductMenu();
             } else {
                 System.out.println("Invalid product type");
