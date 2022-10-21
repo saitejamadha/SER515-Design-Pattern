@@ -38,8 +38,7 @@ public class ProductIterator implements ListIterator {
 	 * Set the current item to the location before the first item
 	 */
 	public void moveToHead() {
-		Product current = classProductList.get(index);
-		this.index = classProductList.indexOf(current) - 1;
+		this.index = 0;
 	}
 
 	/**

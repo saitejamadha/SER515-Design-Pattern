@@ -3,7 +3,6 @@ public class MeatProductMenu implements ProductMenu {
     @Override
     public void showMenu(Facade facade) {
         // TODO: Iterator pattern
-        System.out.println("\n");
         System.out.println("#### MEAT PRODUCT MENU ####");
         int num = 1;
         ListIterator iterator = facade.theProductList.getIterator();
@@ -14,6 +13,7 @@ public class MeatProductMenu implements ProductMenu {
                 num++;
             }
         }
+        iterator.moveToHead();
     }
 
     @Override

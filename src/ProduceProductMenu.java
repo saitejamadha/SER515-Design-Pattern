@@ -1,8 +1,9 @@
 public class ProduceProductMenu implements ProductMenu {
 
+
     @Override
     public void showMenu(Facade facade) {
-        System.out.println("\n");
+        // TODO: Iterator pattern
         System.out.println("#### PRODUCE PRODUCT MENU ####");
         int num = 1;
         ListIterator iterator = facade.theProductList.getIterator();
@@ -13,6 +14,7 @@ public class ProduceProductMenu implements ProductMenu {
                 num++;
             }
         }
+        iterator.moveToHead();
     }
 
     @Override
