@@ -5,6 +5,7 @@ public class ReminderVisitor extends NodeVisitor {
     private final Reminder m_Reminder;
 
     public ReminderVisitor(Reminder reminder) {
+        System.out.println("=========== Visitor Pattern For Reminders ===========");
         m_Reminder = reminder;
     }
 
@@ -26,12 +27,10 @@ public class ReminderVisitor extends NodeVisitor {
      */
     @Override
     void visitTrading(Trading trading) {
-        System.out.println("Visiting Trading ....");
-
         Date currentTime = new Date();
         Date tradingDueDate = trading.getDueDate();
         if (currentTime.compareTo(tradingDueDate) > 0) {
-            m_Reminder.showReminder();
+            m_Reminder.addReminder(trading.getDueDate());
         }
 
     }

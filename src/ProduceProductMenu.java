@@ -1,10 +1,13 @@
 public class ProduceProductMenu implements ProductMenu {
 
-
+    /**
+     * Iterator pattern is implemented here
+     * @param facade
+     */
     @Override
     public void showMenu(Facade facade) {
-        // TODO: Iterator pattern
-        System.out.println("#### PRODUCE PRODUCT MENU ####");
+        System.out.println("=========== Iterator Pattern Over ProductList ===========");
+        System.out.println("\n#### PRODUCE PRODUCT MENU ####");
         int num = 1;
         ListIterator iterator = facade.theProductList.getIterator();
         while (iterator.hasNext()) {

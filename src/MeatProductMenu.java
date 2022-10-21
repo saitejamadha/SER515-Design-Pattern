@@ -2,8 +2,8 @@ public class MeatProductMenu implements ProductMenu {
 
     @Override
     public void showMenu(Facade facade) {
-        // TODO: Iterator pattern
-        System.out.println("#### MEAT PRODUCT MENU ####");
+        System.out.println("=========== Iterator Pattern Over ProductList ===========");
+        System.out.println("\n#### MEAT PRODUCT MENU ####");
         int num = 1;
         ListIterator iterator = facade.theProductList.getIterator();
         while (iterator.hasNext()) {

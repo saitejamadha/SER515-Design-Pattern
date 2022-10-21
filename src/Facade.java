@@ -7,26 +7,45 @@ import java.util.Scanner;
 public class Facade {
 
     private int userType;
+    private String username;
     private Product theSelectedProduct;
     private int nProductCategory;
     public ClassProductList theProductList;
     private Person thePerson;
+
+    public Facade() {
+        System.out.println("=========== Facade Pattern ===========");
+    }
 
     boolean login() {
         Login obj = new Login();
         boolean isSuccessful = obj.login();
         if (isSuccessful) {
             this.userType = obj.getUserType();
+            this.username = obj.getUsername();
             this.thePerson = this.userType == 0 ? new Buyer() : new Seller();
         }
+        System.out.println("=========== Logged in with Bridge Pattern ===========");
         return isSuccessful;
     }
 
     void addTrading() {
     }
 
-    void viewTrading() {
+    void viewTrading() throws IOException {
+        File file = new File("./database/UserProduct.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String st;
 
+        StringBuilder productsBidding = new StringBuilder();
+        while ((st = br.readLine()) != null) {
+            String[] split = st.split(":");
+            if (split[0].equals(this.username)) {
+                productsBidding.append(split[1]).append(", ");
+            }
+        }
+
+        System.out.println("Products you are bidding for: " + productsBidding);
     }
 
     void viewOffering() {
@@ -42,8 +61,12 @@ public class Facade {
 
     }
 
+    /**
+     * Display all trading reminders
+     */
     void remind() {
-
+        Reminder theReminder = Reminder.getInstance();
+        theReminder.showReminders(theProductList);
     }
 
     void createUser(UserInfoItem userinfoItem) {
@@ -66,8 +89,5 @@ public class Facade {
         return null;
     }
 
-    void productOperation() {
-
-    }
 
 }
