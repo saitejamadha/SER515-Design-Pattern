@@ -1,5 +1,9 @@
 public class MeatProductMenu implements ProductMenu {
 
+    /**
+     * Show Meat Product Menu using Iterator Pattern
+     * @param facade Facade
+     */
     @Override
     public void showMenu(Facade facade) {
         System.out.println("=========== Iterator Pattern Over ProductList ===========");

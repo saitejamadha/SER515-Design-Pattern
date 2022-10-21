@@ -13,10 +13,17 @@ public class Facade {
     public ClassProductList theProductList;
     private Person thePerson;
 
+    /**
+     * Facade Pattern
+     */
     public Facade() {
         System.out.println("=========== Facade Pattern ===========");
     }
 
+    /**
+     * Login using Bridge Pattern
+     * @return boolean true if login success
+     */
     boolean login() {
         Login obj = new Login();
         boolean isSuccessful = obj.login();
@@ -32,6 +39,10 @@ public class Facade {
     void addTrading() {
     }
 
+    /**
+     * View the trading menu
+     * @throws IOException
+     */
     void viewTrading() throws IOException {
         File file = new File("./database/UserProduct.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));

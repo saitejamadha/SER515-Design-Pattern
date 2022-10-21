@@ -7,6 +7,10 @@ public class Seller extends Person {
 
     }
 
+    /**
+     * Create Product Menu for Seller using Factory Pattern
+     * @return ProductMenu
+     */
     @Override
     ProductMenu createProductMenu() {
         System.out.println("=========== Factory Method Pattern ===========");
